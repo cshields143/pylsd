@@ -11,13 +11,6 @@ def load_lsd_library():
 
     libnames = ['linux/liblsd.so']
     libdir = 'lib'
-    if sys.platform == 'win32':
-        if sys.maxsize > 2 ** 32:
-            libnames = ['win32/x64/lsd.dll', 'win32/x64/liblsd.dll']
-        else:
-            libnames = ['win32/x86/lsd.dll', 'win32/x86/liblsd.dll']
-    elif sys.platform == 'darwin':
-        libnames = ['darwin/liblsd.dylib']
 
     while root_dir != None:
         for libname in libnames:
