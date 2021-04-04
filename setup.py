@@ -1,16 +1,15 @@
 from setuptools import setup
 
 setup(
-    name='pylsd',
-    version='0.0.1',
-    description='pylsd is the python bindings for LSD - Line Segment Detector',
-    author='Gefu Tang',
-    author_email='tanggefu@gmail.com',
+    name='py3lsd',
+    version='0.1.0',
+    description='python bindings for LSD - Line Segment Detector',
+    author='Chris Shields',
+    author_email='christopher.shields143@gmail.com',
     license='BSD',
     keywords="LSD",
-    url='https://github.com/primetang/pylsd',
+    url='https://github.com/cshields143/pylsd',
     packages=['pylsd', 'pylsd.bindings', 'pylsd.lib'],
     package_dir={'pylsd.lib': 'pylsd/lib'},
-    package_data={'pylsd.lib': [
-        'darwin/*.dylib', 'win32/x86/*.dll', 'win32/x64/*.dll', 'linux/*.so']},
+    package_data={'pylsd.lib': ['*.so']},
 )
