@@ -1,21 +1,17 @@
 from .bindings.lsd_ctypes import *
-
+import os
 
 def lsd(src):
     rows, cols = src.shape
     src = src.reshape(1, rows * cols).tolist()[0]
 
-    temp = os.path.abspath(str(np.random.randint(
-        1, 1000000)) + 'ntl.txt').replace('\\', '/')
+    tmp = os.path.abspath('ntl.txt')
+    src = (ctypes.c_double * len(src))(*src)
+    lsdlib.lsdGet(src, ctypes.c_int(rows), ctypes.c_int(cols), tmp)
 
-    lens = len(src)
-    src = (ctypes.c_double * lens)(*src)
-    lsdlib.lsdGet(src, ctypes.c_int(rows), ctypes.c_int(cols), temp)
-
-    fp = open(temp, 'r')
-    cnt = fp.read().strip().split(' ')
-    fp.close()
-    os.remove(temp)
+    with open(tmp, 'r') as fp:
+        cnt = fp.read().strip().split(' ')
+    os.remove(tmp)
 
     count = int(cnt[0])
     dim = int(cnt[1])
