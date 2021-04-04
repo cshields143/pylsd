@@ -1,7 +1,9 @@
-from .bindings.lsd_ctypes import *
+from .bindings.lsd_ctypes import lsdlib
+import ctypes
 import os
 
 def lsd(src):
+
     rows, cols = src.shape
     src = src.reshape(1, rows * cols).tolist()[0]
 
